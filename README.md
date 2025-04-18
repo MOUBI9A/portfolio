@@ -1,12 +1,11 @@
 # Portfolio Project
 
 ## Overview
-This is a portfolio project built using modern web technologies. It showcases projects, skills, and contact information, and includes an admin dashboard for managing content.
+This is a portfolio project built using modern web technologies. It showcases projects, skills, and contact information.
 
 ## Features
 - **Frontend**: Built with React and TypeScript.
 - **Styling**: Tailwind CSS for responsive and modern design.
-- **Admin Dashboard**: Manage projects, skills, and contact messages.
 - **Routing**: React Router for navigation.
 - **State Management**: Local state and localStorage for persistence.
 

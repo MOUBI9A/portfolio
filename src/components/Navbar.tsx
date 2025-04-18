@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -50,10 +49,8 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="/resume.pdf"
+            href="/resume"
             className="border border-portfolio-secondary text-portfolio-secondary px-4 py-2 rounded hover:bg-portfolio-secondary/10 transition-colors duration-300 mono text-sm"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Resume
           </a>
@@ -120,7 +117,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="/resume.pdf"
+                href="/resume"
                 className="border border-portfolio-secondary text-portfolio-secondary px-6 py-3 rounded hover:bg-portfolio-secondary/10 transition-colors duration-300 mono"
                 target="_blank"
                 rel="noopener noreferrer"
