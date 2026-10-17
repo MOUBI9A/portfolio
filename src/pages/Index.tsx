@@ -103,6 +103,13 @@ const flagshipProjects: Project[] = [
   },
 ];
 
+const caseStudySlugs: Record<string, string> = {
+  "CarHub OS / Fider": "carhub",
+  "Creator Revenue OS": "creator-revenue-os",
+  LeadForge: "leadforge",
+  NOOR: "noor",
+};
+
 const selectedWork: SupportingProject[] = [
   {
     name: "HighLevelSync / LabGenz",
@@ -254,6 +261,7 @@ const Index = () => {
                   <div className="project-meta">
                     <span>{project.status}</span>
                     <div className="project-links">
+                      <a href={`/work/${caseStudySlugs[project.name]}`}>Case study <ArrowUpRight size={14} /></a>
                       {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ExternalLink size={14} /></a>}
                       {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Public repo <ExternalLink size={14} /></a>}
                       {project.privateRepo && <span className="private-label">Private repository</span>}

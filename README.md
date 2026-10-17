@@ -13,6 +13,8 @@ The site is intentionally not a repository dump. Projects are ranked by technica
 - **LeadForge** — Evaluator-Optimizer multi-agent revenue operating system
 - **NOOR** — private long-running personal AI agent / second-brain platform
 
+Each flagship has a dedicated, privacy-safe internal case study covering the problem, architecture, engineering decisions, evidence, maturity and confidentiality boundary without exposing private source or credentials.
+
 ### Supporting work
 
 HighLevelSync / LabGenz, FoodEx, IMAGE Skincare interactive frontend, CIG Car and a compact 1337 / 42 systems-programming foundation.
@@ -54,6 +56,10 @@ The repository includes a GitHub Actions workflow at `.github/workflows/portfoli
 
 - `/` — portfolio
 - `/resume` — current evidence-aligned web résumé
+- `/work/carhub` — CarHub OS / Fider case study
+- `/work/creator-revenue-os` — Creator Revenue OS case study
+- `/work/leadforge` — LeadForge case study
+- `/work/noor` — NOOR case study
 
 ## Release process
 
