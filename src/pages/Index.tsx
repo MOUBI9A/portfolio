@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -182,7 +183,17 @@ const Index = () => {
       <header className="topbar" aria-label="Primary navigation">
         <a href="#top" className="brand" aria-label="Hamza El Moueddane — home">HE<span>/</span>26</a>
         <nav className="desktop-nav" aria-label="Portfolio sections">
-          {navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          {navigation.map(([label, href]) =>
+            href.startsWith("/") ? (
+              <Link key={href} to={href}>
+                {label}
+              </Link>
+            ) : (
+              <a key={href} href={href}>
+                {label}
+              </a>
+            )
+          )}
         </nav>
         <a className="availability desktop-only" href="mailto:hamzamoadin37@gmail.com">
           <span className="availability-dot" aria-hidden="true" /> Available for selected work
@@ -192,7 +203,17 @@ const Index = () => {
         </button>
         {menuOpen && (
           <div className="mobile-menu">
-            {navigation.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
+            {navigation.map(([label, href]) =>
+              href.startsWith("/") ? (
+                <Link key={href} to={href} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </Link>
+              ) : (
+                <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </a>
+              )
+            )}
             <a href="mailto:hamzamoadin37@gmail.com" onClick={() => setMenuOpen(false)}>Start a conversation</a>
           </div>
         )}
@@ -223,6 +244,7 @@ const Index = () => {
                 <p className="console-label">FOUNDATION</p><p className="console-value">1337 / 42 Network · C/C++ systems programming · production web engineering</p>
                 <div className="console-links">
                   <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a>
+                  <Link to="/resume">Resume <ArrowUpRight size={14} /></Link>
                   <a href="mailto:hamzamoadin37@gmail.com">Email <ArrowUpRight size={14} /></a>
                 </div>
               </div>
@@ -261,7 +283,7 @@ const Index = () => {
                   <div className="project-meta">
                     <span>{project.status}</span>
                     <div className="project-links">
-                      <a href={`/work/${caseStudySlugs[project.name]}`}>Case study <ArrowUpRight size={14} /></a>
+                      <Link to={`/work/${caseStudySlugs[project.name]}`}>Case study <ArrowUpRight size={14} /></Link>
                       {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ExternalLink size={14} /></a>}
                       {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Public repo <ExternalLink size={14} /></a>}
                       {project.privateRepo && <span className="private-label">Private repository</span>}
@@ -351,7 +373,7 @@ const Index = () => {
           </div>
           <div className="contact-actions">
             <a className="button primary large" href="mailto:hamzamoadin37@gmail.com">Start a conversation <Mail size={17} /></a>
-            <a className="button ghost large" href="/resume">View resume <ArrowUpRight size={17} /></a>
+            <Link className="button ghost large" to="/resume">View resume <ArrowUpRight size={17} /></Link>
             <a className="button ghost large" href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
           </div>
         </section>
