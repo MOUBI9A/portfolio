@@ -1,26 +1,29 @@
-import { useLocation } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 
 const NotFound = () => {
-  const location = useLocation();
-
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
+    document.title = "Page not found — Hamza El Moueddane";
+  }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
+    <main className="min-h-screen bg-[#0c0d0d] text-[#f3efe7] flex items-center justify-center px-6">
+      <section className="w-full max-w-3xl border border-white/15 p-8 md:p-12">
+        <p className="font-mono text-xs uppercase tracking-[.14em] text-[#ff6b35]">404 / Route not found</p>
+        <h1 className="mt-5 text-5xl md:text-7xl font-semibold tracking-[-.05em] leading-[.95]">
+          This path doesn’t exist.
+        </h1>
+        <p className="mt-6 max-w-xl text-sm md:text-base leading-7 text-white/60">
+          The portfolio is still here. Return to the main page to explore flagship systems, engineering evidence and the current résumé.
+        </p>
+        <a
+          href="/"
+          className="mt-8 min-h-12 px-5 inline-flex items-center gap-2 border border-[#ff6b35] bg-[#ff6b35] text-[#111] font-mono text-xs uppercase tracking-wide"
+        >
+          <ArrowLeft size={15} /> Back to portfolio
         </a>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 
