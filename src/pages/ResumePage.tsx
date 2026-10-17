@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ArrowLeft, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const skills = [
@@ -24,8 +24,8 @@ const ResumePage = () => {
             <ArrowLeft size={15} /> Portfolio
           </Link>
           <div className="flex flex-wrap gap-4 font-mono text-xs">
-            <a href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5">GitHub <Github size={14} /></a>
-            <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5">LinkedIn <Linkedin size={14} /></a>
+            <a href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5">GitHub <ExternalLink size={14} /></a>
+            <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5">LinkedIn <ExternalLink size={14} /></a>
             <a href="mailto:hamzamoadin37@gmail.com" className="inline-flex items-center gap-1.5">Email <Mail size={14} /></a>
           </div>
         </div>
