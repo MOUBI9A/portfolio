@@ -29,7 +29,15 @@ jobs:
         run: npm install --package-lock=false
 
       - name: Typecheck
-        run: npx tsc -b
+        run: npm run typecheck
 
       - name: Production build
         run: npm run build
+
+      - name: Upload production build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: portfolio-dist-${{ github.sha }}
+          path: dist
+          if-no-files-found: error
+          retention-days: 7
