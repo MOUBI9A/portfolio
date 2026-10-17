@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ArrowLeft, ArrowUpRight, ExternalLink, Mail } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Download, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const skills = [
@@ -29,6 +29,7 @@ const ResumePage = () => {
         <div className="resume-topbar">
           <Link to="/" className="resume-back"><ArrowLeft size={15} /> Portfolio</Link>
           <div className="resume-links">
+            <a href="/Hamza_El_Moueddane_Resume_2026.pdf" download>Download PDF <Download size={14} /></a>
             <a href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer">GitHub <ExternalLink size={14} /></a>
             <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={14} /></a>
             <a href="mailto:hamzamoadin37@gmail.com">Email <Mail size={14} /></a>
@@ -119,7 +120,10 @@ const ResumePage = () => {
 
         <footer className="resume-footer">
           <span>Current web resume · evidence aligned with portfolio research</span>
-          <a href="mailto:hamzamoadin37@gmail.com">Contact me <ArrowUpRight size={14} /></a>
+          <div className="resume-links">
+            <a href="/Hamza_El_Moueddane_Resume_2026.pdf" download>Download PDF <Download size={14} /></a>
+            <a href="mailto:hamzamoadin37@gmail.com">Contact me <ArrowUpRight size={14} /></a>
+          </div>
         </footer>
       </div>
     </main>
