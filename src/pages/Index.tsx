@@ -178,6 +178,24 @@ const Index = () => {
     document.title = "Hamza El Moueddane — AI-Native Product Engineer & Systems Architect";
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen]);
+
   return (
     <div className="site-shell">
       <header className="topbar" aria-label="Primary navigation">
@@ -198,11 +216,23 @@ const Index = () => {
         <a className="availability desktop-only" href="mailto:hamzamoadin37@gmail.com">
           <span className="availability-dot" aria-hidden="true" /> Available for selected work
         </a>
-        <button className="menu-button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation" : "Open navigation"}>
+        <button
+          className="menu-button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-controls="mobile-navigation"
+        >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
         {menuOpen && (
-          <div className="mobile-menu">
+          <div
+            id="mobile-navigation"
+            className="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
             {navigation.map(([label, href]) =>
               href.startsWith("/") ? (
                 <Link key={href} to={href} onClick={() => setMenuOpen(false)}>
