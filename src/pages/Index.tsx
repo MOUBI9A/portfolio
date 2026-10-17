@@ -6,9 +6,7 @@ import {
   Cpu,
   Database,
   ExternalLink,
-  Github,
   Layers3,
-  Linkedin,
   Mail,
   MapPin,
   Menu,
@@ -204,7 +202,7 @@ const Index = () => {
               </p>
               <div className="hero-actions">
                 <a className="button primary" href="#work">Explore flagship work <ArrowDown size={16} /></a>
-                <a className="button ghost" href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer">GitHub <Github size={16} /></a>
+                <a className="button ghost" href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer">GitHub <ExternalLink size={16} /></a>
               </div>
             </div>
 
@@ -257,7 +255,7 @@ const Index = () => {
                     <span>{project.status}</span>
                     <div className="project-links">
                       {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ExternalLink size={14} /></a>}
-                      {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Public repo <Github size={14} /></a>}
+                      {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Public repo <ExternalLink size={14} /></a>}
                       {project.privateRepo && <span className="private-label">Private repository</span>}
                     </div>
                   </div>
@@ -311,8 +309,8 @@ const Index = () => {
               <div className="terminal-tags">{systemsFoundation.map((item) => <span key={item}>{item}</span>)}</div>
               <p>Representative work includes Libft, printf, push_swap, minitalk, Minishell, Cub3D and IRC/networking exercises. These projects prove systems foundations rather than acting as inflated standalone case studies.</p>
               <div className="selected-links">
-                <a href="https://github.com/MOUBI9A/42_Projects" target="_blank" rel="noreferrer">42 project archive <Github size={14} /></a>
-                <a href="https://github.com/MOUBI9A/IRC_42" target="_blank" rel="noreferrer">IRC implementation <Github size={14} /></a>
+                <a href="https://github.com/MOUBI9A/42_Projects" target="_blank" rel="noreferrer">42 project archive <ExternalLink size={14} /></a>
+                <a href="https://github.com/MOUBI9A/IRC_42" target="_blank" rel="noreferrer">IRC implementation <ExternalLink size={14} /></a>
               </div>
             </div>
             <div className="timeline">
@@ -346,7 +344,7 @@ const Index = () => {
           <div className="contact-actions">
             <a className="button primary large" href="mailto:hamzamoadin37@gmail.com">Start a conversation <Mail size={17} /></a>
             <a className="button ghost large" href="/resume">View resume <ArrowUpRight size={17} /></a>
-            <a className="button ghost large" href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <Linkedin size={17} /></a>
+            <a className="button ghost large" href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
           </div>
         </section>
       </main>
@@ -354,8 +352,8 @@ const Index = () => {
       <footer className="footer section-wrap">
         <div><strong>Hamza El Moueddane</strong><span>AI-native product engineer & systems architect</span></div>
         <div className="footer-links">
-          <a href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer"><Github size={16} /> GitHub</a>
-          <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn</a>
+          <a href="https://github.com/MOUBI9A" target="_blank" rel="noreferrer"><ExternalLink size={16} /> GitHub</a>
+          <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer"><ExternalLink size={16} /> LinkedIn</a>
           <a href="mailto:hamzamoadin37@gmail.com"><Mail size={16} /> Email</a>
         </div>
         <p>© 2026 · Built as an evidence-backed engineering portfolio.</p>
