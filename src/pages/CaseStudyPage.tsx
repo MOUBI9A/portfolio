@@ -20,6 +20,8 @@ type CaseStudy = {
   live?: string;
 };
 
+const flagshipSequence = ["carhub", "creator-revenue-os", "leadforge", "noor"];
+
 const caseStudies: Record<string, CaseStudy> = {
   carhub: {
     slug: "carhub",
@@ -40,10 +42,10 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Operations", detail: "Containerized local/runtime tooling, migration discipline, test gates and production-readiness documentation." },
     ],
     decisions: [
-      "Treat tenant isolation and permission checks as service/data invariants, not presentation-layer filters.",
-      "Keep different operational roles as first-class product surfaces so workflows match the user doing the job.",
-      "Separate financial, compliance and audit-sensitive paths from ordinary CRUD assumptions.",
-      "Use AI as an assistive layer around operational truth rather than replacing the source-of-truth business state.",
+      "Enforce tenant isolation and role permissions as database and service invariants rather than presentation-layer filters (preventing multi-tenant data leaks).",
+      "Model distinct operational workspaces for owner, fleet manager, desk agent, renter and platform admin so workflows reflect physical responsibilities.",
+      "Isolate financial, billing and compliance pathways from generic CRUD operations to maintain verifiable accounting and auditability.",
+      "Deploy AI strictly as an assistive layer over deterministic operational state—preventing model hallucination from corrupting fleet scheduling.",
     ],
     evidence: [
       "398 backend tests are documented in the current platform architecture.",
@@ -76,11 +78,11 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Provider edge", detail: "Social, attribution, AI and payment providers sit behind adapters so provider claims do not leak into core truth." },
     ],
     decisions: [
-      "A creator accepts one exact published campaign version; accepted terms cannot be silently rewritten later.",
-      "Financial accounting uses balanced double-entry invariants, holds, reversals and idempotent payout behavior.",
-      "Provider success is only shown when the provider actually confirms it; degraded states remain truthful.",
-      "Irreversible or high-risk agent actions retain explicit human approval.",
-      "Historical branches were reconciled subsystem-by-subsystem into one canonical release instead of being blindly merged.",
+      "Campaign terms are strictly immutable upon creator acceptance; accepted terms cannot be silently rewritten by subsequent revisions.",
+      "Financial accounting adheres to double-entry ledger invariants, escrow holds, reversals and idempotent payout execution.",
+      "Provider truth boundary: external social and payment outcomes are only marked verified when external providers authoritatively confirm them.",
+      "High-risk agentic actions (fund movements, contract closures) enforce mandatory human approval gates.",
+      "Consolidated historical branches into one canonical release candidate verified by 740 automated tests rather than speculative merging.",
     ],
     evidence: [
       "740 / 740 automated tests passed in the canonical release gate: 583 unit and 157 database-integration tests.",
@@ -113,11 +115,11 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Integration edge", detail: "Explicit adapters connect sourcing, enrichment, sending, automation and verification providers; MCP exposes controlled external-agent access." },
     ],
     decisions: [
-      "Score leads deterministically before spending model tokens so basic reachability and ICP logic remain inspectable.",
-      "Bound agent retries and make critic feedback actionable instead of creating unbounded self-reflection loops.",
-      "Keep provider credentials server-side; the browser talks through a controlled same-origin proxy.",
-      "Stop nurture immediately when a prospect replies and maintain permanent suppression/deliverability controls.",
-      "Evolve from a lead-generation pipeline toward an opportunity/evidence graph rather than adding disconnected agent features.",
+      "Deterministic lead scoring executes before LLM inference, filtering invalid prospects without burning model token budget.",
+      "Evaluator-Optimizer loop bounds agent retries and yields actionable structured critique rather than unbounded self-reflection loops.",
+      "Provider credentials remain isolated server-side behind a secure proxy; client components never touch downstream API secrets.",
+      "Instant nurture suppression upon prospect reply, backed by permanent deliverability safeguards to preserve sender reputation.",
+      "System evolution from a simple outreach pipeline to an Opportunity Graph with explicit evidence, signals, revenue plays and spend guards.",
     ],
     evidence: [
       "The repository documents the full Critic-gated Evaluator-Optimizer pipeline and bounded retry behavior.",
@@ -150,11 +152,11 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Memory", detail: "SQLite conversation/fact/task state works alongside an Obsidian vault for durable human-readable knowledge." },
     ],
     decisions: [
-      "Every outbound action follows draft → approve rather than granting the model silent write authority.",
-      "Provider routing includes fallback, cooldowns, prompt caching and usage accounting instead of assuming one model is always available.",
-      "Tool execution flows through a safety gate and audit path before handlers run.",
-      "The personal vault is treated as sensitive data and is not restructured or exposed casually.",
-      "Local-model support can reduce external dependency without pretending local inference is equivalent for every task.",
+      "Strict draft-and-approve security model: every outbound action (email, message, commit, API write) requires explicit user confirmation.",
+      "Provider-agnostic routing layer with automated fallback, circuit breakers, cooldown tracking, prompt caching and token accounting.",
+      "Centralized MCP execution gateway with request validation, permission checks and audit logging before running tool handlers.",
+      "Personal knowledge vault is treated as a sensitive local asset—never restructured, indexed externally, or modified without user oversight.",
+      "Support for local models (Ollama) ensures offline resilience without conflating local capability with frontier reasoning requirements.",
     ],
     evidence: [
       "The documented production runtime is TypeScript/Node with a React/Tauri desktop cockpit.",
@@ -189,6 +191,11 @@ const CaseStudyPage = () => {
       </main>
     );
   }
+
+  const currentIndex = flagshipSequence.indexOf(project.slug);
+  const nextSlug = flagshipSequence[(currentIndex + 1) % flagshipSequence.length];
+  const nextProject = caseStudies[nextSlug];
+  const nextNumber = ((currentIndex + 1) % flagshipSequence.length) + 1;
 
   return (
     <main className="case-page">
@@ -229,7 +236,7 @@ const CaseStudyPage = () => {
         </section>
 
         <section className="case-section case-two-column">
-          <div><p className="case-section-index">03 / Decisions</p><h2>What I optimized for.</h2></div>
+          <div><p className="case-section-index">03 / Decisions & Tradeoffs</p><h2>What I optimized for.</h2></div>
           <ol className="case-decision-list">
             {project.decisions.map((decision, index) => <li key={decision}><span>{String(index + 1).padStart(2, "0")}</span>{decision}</li>)}
           </ol>
@@ -251,8 +258,15 @@ const CaseStudyPage = () => {
         </section>
 
         <section className="case-next">
-          <div><p className="case-section-index">NEXT</p><h2>See the rest of the engineering portfolio.</h2></div>
-          <Link to="/#work">Back to flagship work <ArrowUpRight size={16} /></Link>
+          <div className="case-next-info">
+            <p className="case-section-index">NEXT FLAGSHIP ({String(nextNumber).padStart(2, "0")} / 04)</p>
+            <h2>{nextProject.name}</h2>
+            <p className="case-next-kicker">{nextProject.kicker}</p>
+          </div>
+          <div className="case-next-actions">
+            <Link className="button primary" to={`/work/${nextProject.slug}`}>Read case study <ArrowUpRight size={15} /></Link>
+            <Link className="button ghost" to="/#work"><ArrowLeft size={15} /> All flagship systems</Link>
+          </div>
         </section>
       </div>
     </main>
