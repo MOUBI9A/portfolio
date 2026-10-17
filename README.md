@@ -27,11 +27,11 @@ HighLevelSync / LabGenz, FoodEx, IMAGE Skincare interactive frontend, CIG Car an
 ## Stack
 
 - React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- React Router
+- TypeScript 5.9
+- Vite 8
+- React Router 7
 - lucide-react
+- Hand-built responsive CSS design system
 
 ## Local development
 
@@ -43,11 +43,12 @@ npm run dev
 ## Verification
 
 ```bash
-npx tsc -b
+npm audit --audit-level=moderate
+npm run typecheck
 npm run build
 ```
 
-The repository includes a GitHub Actions workflow at `.github/workflows/portfolio-ci.yml` that runs the TypeScript project build and production Vite build on the portfolio redesign branch and pull requests to `main`.
+The repository includes a GitHub Actions workflow at `.github/workflows/portfolio-ci.yml` that uses a locked dependency install, dependency-audit gate, TypeScript project check and production build on the redesign branch and pull requests to `main`.
 
 ## Main routes
 
@@ -57,7 +58,7 @@ The repository includes a GitHub Actions workflow at `.github/workflows/portfoli
 ## Release process
 
 1. Work on a dedicated branch.
-2. Verify TypeScript and production build in CI.
+2. Verify locked dependencies, audit, TypeScript and production build in CI.
 3. Review preview behavior on desktop, tablet and mobile.
-4. Check external project links and accessibility.
-5. Merge only after the portfolio claims and UI are both reviewed.
+4. Check external project links, privacy boundaries and accessibility.
+5. Merge only after portfolio claims and UI are both reviewed.
