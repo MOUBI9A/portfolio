@@ -1,61 +1,63 @@
-# Portfolio Project
+# Hamza El Moueddane — Engineering Portfolio
 
-## Overview
-This is a portfolio project built using modern web technologies. It showcases projects, skills, and contact information.
+Evidence-backed professional portfolio for **Hamza El Moueddane**, positioned around AI-native product engineering, full-stack systems architecture, SaaS, automation and production-focused release work.
 
-## Features
-- **Frontend**: Built with React and TypeScript.
-- **Styling**: Tailwind CSS for responsive and modern design.
-- **Routing**: React Router for navigation.
-- **State Management**: Local state and localStorage for persistence.
+## Portfolio strategy
 
-## Technologies Used
-- **React**: Component-based UI library.
-- **TypeScript**: Strongly typed JavaScript.
-- **Vite**: Fast development build tool.
-- **Tailwind CSS**: Utility-first CSS framework.
-- **shadcn-ui**: Pre-built UI components.
+The site is intentionally not a repository dump. Projects are ranked by technical depth, product complexity, implementation evidence and current maturity.
 
-## Getting Started
+### Flagship systems
 
-### Prerequisites
-- Node.js and npm installed.
+- **CarHub OS / Fider** — multi-tenant automotive SaaS / ERP and trust layer
+- **Creator Revenue OS** — creator commerce, AI characters, campaign operations and finance-grade settlement workflows
+- **LeadForge** — Evaluator-Optimizer multi-agent revenue operating system
+- **NOOR** — private long-running personal AI agent / second-brain platform
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone git@github.com:MOUBI9A/tech-path-spotlight.git portfolio
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd portfolio
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Supporting work
 
-### Running the Project
-1. Start the development server:
-   ```bash
-   npm run dev
-   ```
-2. Open your browser and navigate to `http://localhost:8080`.
+HighLevelSync / LabGenz, FoodEx, IMAGE Skincare interactive frontend, CIG Car and a compact 1337 / 42 systems-programming foundation.
 
-## Project Structure
-- **src/**: Contains all source code.
-  - **components/**: Reusable React components.
-  - **pages/**: Page-level components for routing.
-  - **ui/**: UI-specific components.
-  - **hooks/**: Custom React hooks.
-  - **lib/**: Utility functions.
+## Evidence policy
 
-## Deployment
-To deploy the project, build the production version:
+- Public claims should be supported by repository documentation, release reports, CI/test output, deployments or other inspectable evidence.
+- Private repositories may be described at a safe architectural level but must not expose source, credentials, internal URLs or proprietary data.
+- Prototype, preview and release-candidate work must not be presented as production simply because it builds.
+- AI tooling is presented as engineering leverage, not a substitute for architecture, debugging, review, testing or release responsibility.
+
+## Stack
+
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- lucide-react
+
+## Local development
+
 ```bash
+npm ci
+npm run dev
+```
+
+## Verification
+
+```bash
+npx tsc -b
 npm run build
 ```
-The output will be in the `dist/` directory, ready to be served by any static file server.
 
-## License
-This project is licensed under the MIT License.
+The repository includes a GitHub Actions workflow at `.github/workflows/portfolio-ci.yml` that runs the TypeScript project build and production Vite build on the portfolio redesign branch and pull requests to `main`.
+
+## Main routes
+
+- `/` — portfolio
+- `/resume` — current evidence-aligned web résumé
+
+## Release process
+
+1. Work on a dedicated branch.
+2. Verify TypeScript and production build in CI.
+3. Review preview behavior on desktop, tablet and mobile.
+4. Check external project links and accessibility.
+5. Merge only after the portfolio claims and UI are both reviewed.
