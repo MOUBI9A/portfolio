@@ -76,4 +76,26 @@ for (const route of routes) {
   await writeFile(path.join(directory, "index.html"), buildRouteHtml(route), "utf8");
 }
 
-console.log(`Generated ${routes.length} route-specific HTML entry points.`);
+const notFoundHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0c0d0d" />
+  <title>404 — Hamza El Moueddane</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#0c0d0d;color:#f3efe7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.box{max-width:720px;border:1px solid rgba(243,239,231,.18);padding:48px}.k{margin:0 0 14px;color:#ff6b35;font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:clamp(48px,10vw,92px);line-height:.95;letter-spacing:-.055em}p{margin:24px 0 0;color:#bdb7ab;font-size:17px;line-height:1.7}a{display:inline-flex;margin-top:32px;padding:14px 18px;background:#ff6b35;color:#111;text-decoration:none;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.06em}</style>
+</head>
+<body>
+  <main class="box">
+    <p class="k">404 / Not found</p>
+    <h1>This route doesn’t exist.</h1>
+    <p>The portfolio has moved or this URL is invalid. Return to the verified work and case studies.</p>
+    <a href="/">Back to portfolio</a>
+  </main>
+</body>
+</html>`;
+await writeFile(path.join(distDir, "404.html"), notFoundHtml, "utf8");
+
+console.log(`Generated ${routes.length} route-specific HTML entry points plus 404.html.`);
