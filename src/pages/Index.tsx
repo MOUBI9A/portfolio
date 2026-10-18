@@ -53,6 +53,7 @@ const flagshipProjects: Project[] = [
     proof: [
       "398 backend tests documented in the current platform architecture",
       "Multi-role product surfaces for owner, manager, agent, renter and platform admin",
+      "Earlier CarHub V2 / Infinity deployment lineage consolidated into the current OS",
       "Production-oriented tenancy, auth, finance and audit boundaries",
     ],
     status: "Active product / pilot hardening",
@@ -124,6 +125,24 @@ const selectedWork: SupportingProject[] = [
     privateRepo: true,
   },
   {
+    name: "Pulse — Instagram Analytics",
+    type: "Local-first analytics · AI concept studio",
+    description:
+      "A privacy-first Instagram analytics dashboard for public-account lookup, watchlists, comparisons, exports and creator strategy. It combines disk-cached analytics with an optional multi-provider AI Concept Studio and Meta Graph API workflows.",
+    tags: ["Python", "Vanilla JS", "Chart.js", "Instagram Graph API", "Gemini / Claude / OpenAI", "Local-first"],
+    live: "https://instagram-analytics-omega.vercel.app",
+    repo: "https://github.com/MOUBI9A/instagram-analytics",
+  },
+  {
+    name: "ArtifactOS",
+    type: "Creator portfolio SaaS · Deployed product",
+    description:
+      "A cinematic portfolio operating system for creators, built around work archives, network connections, analytics, edge delivery and multiple interface skins. The deployed product is backed by a Next.js + Supabase stack.",
+    tags: ["Next.js", "TypeScript", "Supabase", "Framer Motion", "Vercel", "Product design"],
+    live: "https://art-porfolio-one.vercel.app",
+    repo: "https://github.com/MOUBI9A/art-porfolio",
+  },
+  {
     name: "FoodEx",
     type: "Multi-platform marketplace",
     description:
@@ -133,10 +152,10 @@ const selectedWork: SupportingProject[] = [
   },
   {
     name: "IMAGE Skincare Interactive Ritual",
-    type: "Interactive frontend experiment",
+    type: "Interactive campaign · Deployed frontend",
     description:
-      "An interactive product story using CSS-rendered 3D-style objects, autoplay, drag/swipe, keyboard controls, routine composition and reduced-motion behavior.",
-    tags: ["Interactive UI", "Responsive", "Accessibility", "Creative frontend"],
+      "A premium four-step skincare campaign built around real product photography and an interactive cleanse, hydrate, repair and protect ritual, with responsive and reduced-motion behavior.",
+    tags: ["Interactive UI", "Responsive", "Accessibility", "Creative frontend", "Vercel"],
     live: "https://image-skincare-five-star.vercel.app",
   },
   {
@@ -146,6 +165,30 @@ const selectedWork: SupportingProject[] = [
       "Digital presence and product work for a Casablanca vehicle-rental business, including landing experiences and customer-facing workflows.",
     tags: ["React", "TypeScript", "Product", "Automotive"],
     privateRepo: true,
+  },
+  {
+    name: "MLMFUN Creator Journey",
+    type: "Client funnel UX · Review deployment",
+    description:
+      "A multi-page webinar and partner-interest journey created for review: launch page, confirmation states, partner-interest flow and explicit demo-mode form behavior. Presented as funnel UX evidence rather than a live registration backend.",
+    tags: ["Funnel UX", "Landing pages", "Conversion flow", "Responsive", "Vercel"],
+    live: "https://mlmfun-creator-webinar.vercel.app",
+  },
+  {
+    name: "MLMFUN Partner Briefing",
+    type: "Client event landing page · Deployed",
+    description:
+      "A focused partner-webinar landing experience with a concise launch narrative, participation paths and seat-registration interface for MLMFUN / MLM Mastery.",
+    tags: ["Landing page", "Event UX", "Conversion", "Responsive", "Client work"],
+    live: "https://mlmfun-partner-briefing.vercel.app",
+  },
+  {
+    name: "Soul Flower Somatics",
+    type: "Pre-launch brand experience · Deployed concept",
+    description:
+      "A somatic-practice web experience combining breath, movement and sound with an interactive three-breath exercise. The deployed build is presented as pre-launch work because some photography and booking destinations remain placeholders.",
+    tags: ["Brand experience", "Interactive UX", "Responsive", "Wellness", "Pre-launch"],
+    live: "https://soul-flower-sky.vercel.app",
   },
 ];
 
