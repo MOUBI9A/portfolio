@@ -115,11 +115,12 @@ const caseStudySlugs: Record<string, string> = {
 
 const selectedWork: SupportingProject[] = [
   {
-    name: "HighLevelSync / LabGenz",
-    type: "Automation architecture",
+    name: "Labgenz / HighLevelSync",
+    type: "Client systems engineering · Live production work",
     description:
-      "Multi-tenant CRM and workflow architecture spanning GoHighLevel, WordPress, automation, lead flows, infrastructure audits and agency operations.",
-    tags: ["GoHighLevel", "WordPress", "CRM", "Webhooks", "Automation"],
+      "Client and agency engineering across Labgenz's AI systems marketplace and operational stack: WordPress/GoHighLevel integration, CRM workflows, forms, webhooks, booking flows, reporting, automation and product-system implementation. The live site includes inspectable interactive system previews such as Outreach Orbit.",
+    tags: ["GoHighLevel", "WordPress", "CRM", "Webhooks", "Automation", "Client work"],
+    live: "https://labgenz.com",
     privateRepo: true,
   },
   {
@@ -391,7 +392,7 @@ const Index = () => {
             </div>
             <div className="timeline">
               <article><span>2026</span><div><h3>AI-native product & systems engineering</h3><p>CarHub OS, Creator Revenue OS, LeadForge, NOOR and release-focused engineering across SaaS and agent platforms.</p></div></article>
-              <article><span>2026</span><div><h3>LabGenz / HighLevelSync</h3><p>CRM architecture, WordPress/GoHighLevel integrations, automation workflows, web systems and operational tooling.</p></div></article>
+              <article><span>2026</span><div><h3>Labgenz / HighLevelSync</h3><p>Client systems engineering across CRM architecture, WordPress/GoHighLevel integrations, automation workflows, live web systems and operational tooling.</p></div></article>
               <article><span>2025</span><div><h3>UM6P Explorer / Startup Venture</h3><p>FoodEx product engineering, role-based workflows, APIs and cross-platform application work.</p></div></article>
               <article><span>42</span><div><h3>1337 / UM6P</h3><p>Peer-driven systems engineering curriculum focused on C/C++, Unix, networking and learning by building.</p></div></article>
             </div>
