@@ -28,30 +28,33 @@ const caseStudies: Record<string, CaseStudy> = {
     name: "CarHub OS / Fider",
     kicker: "Automotive SaaS · Multi-tenant ERP · Trust layer",
     summary:
-      "A multi-tenant operating system for car-rental and mobility businesses, designed to unify fleet operations, bookings, customers, finance, compliance and role-specific workflows without collapsing tenant or permission boundaries.",
+      "A multi-tenant operating system for car-rental and mobility businesses, designed to unify fleet operations, digital inspections, bookings, maintenance work orders, customer trust and role-specific workflows without collapsing tenant or permission boundaries.",
     role: "Product architecture, full-stack systems engineering, platform design, QA and release engineering",
     status: "Active product · pilot hardening",
     stack: ["Next.js 16", "React", "NestJS", "PostgreSQL", "Prisma", "Docker"],
     problem:
       "Rental operations tend to fragment across booking tools, spreadsheets, messaging, payment records and staff-specific processes. The product direction is a single operational layer that gives each agency its own isolated workspace while preserving clear roles, auditable business state and room for AI-assisted workflows.",
     architecture: [
-      { label: "Role surfaces", detail: "Separate owner, manager, agent, renter and platform-admin experiences rather than one overloaded dashboard." },
-      { label: "Application layer", detail: "Next.js application routes and a shared design system for public, agency, agent, renter and administration flows." },
+      { label: "Trust & inspections", detail: "Digital check-in/check-out walkarounds, timestamped condition logs, damage intake and audit trails." },
+      { label: "Fleet & work orders", detail: "Asset lifecycle, maintenance dispatch, parts inventory, diagnostics and expense reconciliation." },
+      { label: "Role workspaces", detail: "Separate owner, manager, desk agent, renter and platform-admin surfaces rather than one overloaded dashboard." },
       { label: "API boundary", detail: "NestJS request pipeline with authentication, role checks, validation and service-level tenant logic before persistence." },
       { label: "Data layer", detail: "Prisma-backed PostgreSQL models for fleet, bookings, customers, payments, staff and operational records." },
-      { label: "Operations", detail: "Containerized local/runtime tooling, migration discipline, test gates and production-readiness documentation." },
+      { label: "Operations & runtime", detail: "Containerized local/runtime tooling, migration discipline, test gates and production-readiness documentation." },
     ],
     decisions: [
       "Enforce tenant isolation and role permissions as database and service invariants rather than presentation-layer filters (preventing multi-tenant data leaks).",
-      "Model distinct operational workspaces for owner, fleet manager, desk agent, renter and platform admin so workflows reflect physical responsibilities.",
+      "Decouple vehicle inspection and condition evidence from general booking CRUD to create tamper-evident check-in/check-out audit trails.",
+      "Model maintenance work orders as an explicit finite-state machine (scheduled, in-progress, completed, reconciled) to prevent untracked fleet expenses.",
       "Isolate financial, billing and compliance pathways from generic CRUD operations to maintain verifiable accounting and auditability.",
-      "Deploy AI strictly as an assistive layer over deterministic operational state—preventing model hallucination from corrupting fleet scheduling.",
+      "Deploy AI vision condition scanning strictly as an assistive layer over deterministic operational state—preventing model hallucination from corrupting fleet scheduling.",
     ],
     evidence: [
-      "398 backend tests are documented in the current platform architecture.",
-      "The platform documents distinct role surfaces for owner, manager, agent, renter and platform administration.",
-      "Current architecture includes explicit tenant, authentication, finance and audit boundaries.",
-      "The public product domain is deployed while the active source repositories remain private.",
+      "398 backend tests are documented across authentication, tenancy, bookings, fleet and work orders.",
+      "Dedicated multi-role surfaces implemented for agency owner, fleet manager, desk agent, renter and platform administration.",
+      "Inspection walkaround, damage intake and maintenance lifecycle models backed by auditable state machines.",
+      "Explicit tenant, authentication, finance and audit boundaries enforced before database persistence.",
+      "The public product domain is deployed at carhub.codes while the active source repositories remain private.",
     ],
     currentState:
       "The product is presented as an active system in pilot hardening—not as a finished mass-market deployment. The portfolio deliberately separates implemented architecture and test evidence from future product ambition.",
@@ -217,12 +220,20 @@ const CaseStudyPage = () => {
           {project.live && <a className="case-live" href={project.live} target="_blank" rel="noreferrer">Visit public product <ExternalLink size={15} /></a>}
         </section>
 
-        <section className="case-section case-two-column">
+        <nav className="case-jump-nav" aria-label="Case study sections">
+          <a href="#problem">01 / Problem</a>
+          <a href="#architecture">02 / Architecture</a>
+          <a href="#decisions">03 / Decisions</a>
+          <a href="#evidence">04 / Evidence</a>
+          <a href="#maturity">05 / Maturity</a>
+        </nav>
+
+        <section id="problem" className="case-section case-two-column">
           <div><p className="case-section-index">01 / Problem</p><h2>The system problem behind the product.</h2></div>
           <p className="case-body-large">{project.problem}</p>
         </section>
 
-        <section className="case-section">
+        <section id="architecture" className="case-section">
           <div className="case-section-heading"><p className="case-section-index">02 / Architecture</p><h2>System shape.</h2></div>
           <div className="architecture-flow">
             {project.architecture.map((layer, index) => (
@@ -235,21 +246,21 @@ const CaseStudyPage = () => {
           </div>
         </section>
 
-        <section className="case-section case-two-column">
+        <section id="decisions" className="case-section case-two-column">
           <div><p className="case-section-index">03 / Decisions & Tradeoffs</p><h2>What I optimized for.</h2></div>
           <ol className="case-decision-list">
             {project.decisions.map((decision, index) => <li key={decision}><span>{String(index + 1).padStart(2, "0")}</span>{decision}</li>)}
           </ol>
         </section>
 
-        <section className="case-section evidence-section">
+        <section id="evidence" className="case-section evidence-section">
           <div className="case-section-heading"><p className="case-section-index">04 / Evidence</p><h2>Claims with a boundary.</h2></div>
           <div className="case-evidence-grid">
             {project.evidence.map((item) => <div key={item}><CheckCircle2 size={17} /><span>{item}</span></div>)}
           </div>
         </section>
 
-        <section className="case-section case-two-column">
+        <section id="maturity" className="case-section case-two-column">
           <div><p className="case-section-index">05 / Maturity</p><h2>Where it actually stands.</h2></div>
           <div>
             <p className="case-body-large">{project.currentState}</p>

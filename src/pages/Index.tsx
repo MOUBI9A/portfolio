@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import {
   ArrowDown,
   ArrowUpRight,
+  Check,
   CheckCircle2,
+  Copy,
   Cpu,
   Database,
   ExternalLink,
@@ -118,6 +120,7 @@ const selectedWork: SupportingProject[] = [
     description:
       "Multi-tenant CRM and workflow architecture spanning GoHighLevel, WordPress, automation, lead flows, infrastructure audits and agency operations.",
     tags: ["GoHighLevel", "WordPress", "CRM", "Webhooks", "Automation"],
+    privateRepo: true,
   },
   {
     name: "FoodEx",
@@ -173,6 +176,16 @@ const navigation = [
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText("hamzamoadin37@gmail.com").catch(() => {});
+    }
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2200);
+  };
 
   useEffect(() => {
     document.title = "Hamza El Moueddane — AI-Native Product Engineer & Systems Architect";
@@ -275,7 +288,10 @@ const Index = () => {
                 <div className="console-links">
                   <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a>
                   <Link to="/resume">Resume <ArrowUpRight size={14} /></Link>
-                  <a href="mailto:hamzamoadin37@gmail.com">Email <ArrowUpRight size={14} /></a>
+                  <button type="button" className="console-copy-link" onClick={handleCopyEmail} title="Copy hamzamoadin37@gmail.com to clipboard" aria-label="Copy email address to clipboard">
+                    {copiedEmail ? <Check size={13} /> : <Mail size={13} />}
+                    <span>{copiedEmail ? "Copied" : "Copy email"}</span>
+                  </button>
                 </div>
               </div>
             </aside>
@@ -403,6 +419,16 @@ const Index = () => {
           </div>
           <div className="contact-actions">
             <a className="button primary large" href="mailto:hamzamoadin37@gmail.com">Start a conversation <Mail size={17} /></a>
+            <button
+              type="button"
+              className="button ghost large copy-email-btn"
+              onClick={handleCopyEmail}
+              aria-label="Copy email address to clipboard"
+              title="Copy hamzamoadin37@gmail.com to clipboard"
+            >
+              {copiedEmail ? <Check size={17} /> : <Copy size={17} />}
+              <span>{copiedEmail ? "Copied to clipboard" : "Copy email"}</span>
+            </button>
             <Link className="button ghost large" to="/resume">View resume <ArrowUpRight size={17} /></Link>
             <a className="button ghost large" href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
           </div>
