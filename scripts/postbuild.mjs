@@ -10,37 +10,37 @@ const routes = [
     path: "/resume",
     title: "Resume — Hamza El Moueddane · Full-Stack & AI Product Engineer",
     description: "Resume of Hamza El Moueddane: full-stack software engineer and AI product engineer with SaaS, automation, systems programming and product-delivery experience.",
-    image: "/og-resume.png",
+    image: "/og-image.png",
   },
   {
     path: "/work/carhub",
     title: "CarHub OS / Fider Case Study — Hamza El Moueddane",
     description: "CarHub OS case study: multi-tenant automotive operations, role boundaries, inspections, work orders, PostgreSQL/NestJS architecture and pilot hardening.",
-    image: "/og-carhub.png",
+    image: "/og-image.png",
   },
   {
     path: "/work/creator-revenue-os",
     title: "Creator Revenue OS Case Study — Hamza El Moueddane",
     description: "Creator Revenue OS case study: immutable campaign terms, provider truth, attribution, finance-grade settlement and release verification.",
-    image: "/og-creator-revenue-os.png",
+    image: "/og-image.png",
   },
   {
     path: "/work/leadforge",
     title: "LeadForge Case Study — Hamza El Moueddane",
     description: "LeadForge case study: Evaluator-Optimizer agents, deterministic scoring, durable queues, deliverability safeguards and provider integrations.",
-    image: "/og-leadforge.png",
+    image: "/og-image.png",
   },
   {
     path: "/work/noor",
     title: "NOOR Personal Agent Case Study — Hamza El Moueddane",
     description: "NOOR case study: long-running personal agent architecture, memory, multi-provider routing, MCP services, approval and audit boundaries.",
-    image: "/og-noor.png",
+    image: "/og-image.png",
   },
   {
     path: "/work/labgenz",
     title: "Labgenz / HighLevelSync Client Systems Case Study — Hamza El Moueddane",
     description: "Labgenz client systems case study: WordPress, GoHighLevel/CRM, webhooks, bookings, automation, reporting and production integration work.",
-    image: "/og-labgenz.png",
+    image: "/og-image.png",
   },
 ];
 
