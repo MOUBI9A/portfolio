@@ -1,12 +1,12 @@
 {
   "name": "hamza-engineering-portfolio",
   "private": true,
-  "version": "2026.10.0",
+  "version": "2026.10.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc -b",
-    "build": "vite build",
+    "build": "vite build && node scripts/postbuild.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
