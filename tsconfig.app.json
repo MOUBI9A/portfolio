@@ -21,12 +21,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/vite-env.d.ts",
-    "src/main.tsx",
-    "src/App.tsx",
-    "src/pages/Index.tsx",
-    "src/pages/ResumePage.tsx",
-    "src/pages/NotFound.tsx"
-  ]
+  "include": ["src"]
 }
