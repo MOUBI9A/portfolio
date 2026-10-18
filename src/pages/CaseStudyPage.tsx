@@ -20,36 +20,41 @@ type CaseStudy = {
   live?: string;
 };
 
+const flagshipSequence = ["carhub", "creator-revenue-os", "leadforge", "noor"];
+
 const caseStudies: Record<string, CaseStudy> = {
   carhub: {
     slug: "carhub",
     name: "CarHub OS / Fider",
     kicker: "Automotive SaaS · Multi-tenant ERP · Trust layer",
     summary:
-      "A multi-tenant operating system for car-rental and mobility businesses, designed to unify fleet operations, bookings, customers, finance, compliance and role-specific workflows without collapsing tenant or permission boundaries.",
+      "A multi-tenant operating system for car-rental and mobility businesses, designed to unify fleet operations, digital inspections, bookings, maintenance work orders, customer trust and role-specific workflows without collapsing tenant or permission boundaries.",
     role: "Product architecture, full-stack systems engineering, platform design, QA and release engineering",
     status: "Active product · pilot hardening",
     stack: ["Next.js 16", "React", "NestJS", "PostgreSQL", "Prisma", "Docker"],
     problem:
       "Rental operations tend to fragment across booking tools, spreadsheets, messaging, payment records and staff-specific processes. The product direction is a single operational layer that gives each agency its own isolated workspace while preserving clear roles, auditable business state and room for AI-assisted workflows.",
     architecture: [
-      { label: "Role surfaces", detail: "Separate owner, manager, agent, renter and platform-admin experiences rather than one overloaded dashboard." },
-      { label: "Application layer", detail: "Next.js application routes and a shared design system for public, agency, agent, renter and administration flows." },
+      { label: "Trust & inspections", detail: "Digital check-in/check-out walkarounds, timestamped condition logs, damage intake and audit trails." },
+      { label: "Fleet & work orders", detail: "Asset lifecycle, maintenance dispatch, parts inventory, diagnostics and expense reconciliation." },
+      { label: "Role workspaces", detail: "Separate owner, manager, desk agent, renter and platform-admin surfaces rather than one overloaded dashboard." },
       { label: "API boundary", detail: "NestJS request pipeline with authentication, role checks, validation and service-level tenant logic before persistence." },
       { label: "Data layer", detail: "Prisma-backed PostgreSQL models for fleet, bookings, customers, payments, staff and operational records." },
-      { label: "Operations", detail: "Containerized local/runtime tooling, migration discipline, test gates and production-readiness documentation." },
+      { label: "Operations & runtime", detail: "Containerized local/runtime tooling, migration discipline, test gates and production-readiness documentation." },
     ],
     decisions: [
-      "Treat tenant isolation and permission checks as service/data invariants, not presentation-layer filters.",
-      "Keep different operational roles as first-class product surfaces so workflows match the user doing the job.",
-      "Separate financial, compliance and audit-sensitive paths from ordinary CRUD assumptions.",
-      "Use AI as an assistive layer around operational truth rather than replacing the source-of-truth business state.",
+      "Enforce tenant isolation and role permissions as database and service invariants rather than presentation-layer filters (preventing multi-tenant data leaks).",
+      "Decouple vehicle inspection and condition evidence from general booking CRUD to create tamper-evident check-in/check-out audit trails.",
+      "Model maintenance work orders as an explicit finite-state machine (scheduled, in-progress, completed, reconciled) to prevent untracked fleet expenses.",
+      "Isolate financial, billing and compliance pathways from generic CRUD operations to maintain verifiable accounting and auditability.",
+      "Deploy AI vision condition scanning strictly as an assistive layer over deterministic operational state—preventing model hallucination from corrupting fleet scheduling.",
     ],
     evidence: [
-      "398 backend tests are documented in the current platform architecture.",
-      "The platform documents distinct role surfaces for owner, manager, agent, renter and platform administration.",
-      "Current architecture includes explicit tenant, authentication, finance and audit boundaries.",
-      "The public product domain is deployed while the active source repositories remain private.",
+      "398 backend tests are documented across authentication, tenancy, bookings, fleet and work orders.",
+      "Dedicated multi-role surfaces implemented for agency owner, fleet manager, desk agent, renter and platform administration.",
+      "Inspection walkaround, damage intake and maintenance lifecycle models backed by auditable state machines.",
+      "Explicit tenant, authentication, finance and audit boundaries enforced before database persistence.",
+      "The public product domain is deployed at carhub.codes while the active source repositories remain private.",
     ],
     currentState:
       "The product is presented as an active system in pilot hardening—not as a finished mass-market deployment. The portfolio deliberately separates implemented architecture and test evidence from future product ambition.",
@@ -76,11 +81,11 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Provider edge", detail: "Social, attribution, AI and payment providers sit behind adapters so provider claims do not leak into core truth." },
     ],
     decisions: [
-      "A creator accepts one exact published campaign version; accepted terms cannot be silently rewritten later.",
-      "Financial accounting uses balanced double-entry invariants, holds, reversals and idempotent payout behavior.",
-      "Provider success is only shown when the provider actually confirms it; degraded states remain truthful.",
-      "Irreversible or high-risk agent actions retain explicit human approval.",
-      "Historical branches were reconciled subsystem-by-subsystem into one canonical release instead of being blindly merged.",
+      "Campaign terms are strictly immutable upon creator acceptance; accepted terms cannot be silently rewritten by subsequent revisions.",
+      "Financial accounting adheres to double-entry ledger invariants, escrow holds, reversals and idempotent payout execution.",
+      "Provider truth boundary: external social and payment outcomes are only marked verified when external providers authoritatively confirm them.",
+      "High-risk agentic actions (fund movements, contract closures) enforce mandatory human approval gates.",
+      "Consolidated historical branches into one canonical release candidate verified by 740 automated tests rather than speculative merging.",
     ],
     evidence: [
       "740 / 740 automated tests passed in the canonical release gate: 583 unit and 157 database-integration tests.",
@@ -113,11 +118,11 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Integration edge", detail: "Explicit adapters connect sourcing, enrichment, sending, automation and verification providers; MCP exposes controlled external-agent access." },
     ],
     decisions: [
-      "Score leads deterministically before spending model tokens so basic reachability and ICP logic remain inspectable.",
-      "Bound agent retries and make critic feedback actionable instead of creating unbounded self-reflection loops.",
-      "Keep provider credentials server-side; the browser talks through a controlled same-origin proxy.",
-      "Stop nurture immediately when a prospect replies and maintain permanent suppression/deliverability controls.",
-      "Evolve from a lead-generation pipeline toward an opportunity/evidence graph rather than adding disconnected agent features.",
+      "Deterministic lead scoring executes before LLM inference, filtering invalid prospects without burning model token budget.",
+      "Evaluator-Optimizer loop bounds agent retries and yields actionable structured critique rather than unbounded self-reflection loops.",
+      "Provider credentials remain isolated server-side behind a secure proxy; client components never touch downstream API secrets.",
+      "Instant nurture suppression upon prospect reply, backed by permanent deliverability safeguards to preserve sender reputation.",
+      "System evolution from a simple outreach pipeline to an Opportunity Graph with explicit evidence, signals, revenue plays and spend guards.",
     ],
     evidence: [
       "The repository documents the full Critic-gated Evaluator-Optimizer pipeline and bounded retry behavior.",
@@ -150,11 +155,11 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Memory", detail: "SQLite conversation/fact/task state works alongside an Obsidian vault for durable human-readable knowledge." },
     ],
     decisions: [
-      "Every outbound action follows draft → approve rather than granting the model silent write authority.",
-      "Provider routing includes fallback, cooldowns, prompt caching and usage accounting instead of assuming one model is always available.",
-      "Tool execution flows through a safety gate and audit path before handlers run.",
-      "The personal vault is treated as sensitive data and is not restructured or exposed casually.",
-      "Local-model support can reduce external dependency without pretending local inference is equivalent for every task.",
+      "Strict draft-and-approve security model: every outbound action (email, message, commit, API write) requires explicit user confirmation.",
+      "Provider-agnostic routing layer with automated fallback, circuit breakers, cooldown tracking, prompt caching and token accounting.",
+      "Centralized MCP execution gateway with request validation, permission checks and audit logging before running tool handlers.",
+      "Personal knowledge vault is treated as a sensitive local asset—never restructured, indexed externally, or modified without user oversight.",
+      "Support for local models (Ollama) ensures offline resilience without conflating local capability with frontier reasoning requirements.",
     ],
     evidence: [
       "The documented production runtime is TypeScript/Node with a React/Tauri desktop cockpit.",
@@ -190,6 +195,11 @@ const CaseStudyPage = () => {
     );
   }
 
+  const currentIndex = flagshipSequence.indexOf(project.slug);
+  const nextSlug = flagshipSequence[(currentIndex + 1) % flagshipSequence.length];
+  const nextProject = caseStudies[nextSlug];
+  const nextNumber = ((currentIndex + 1) % flagshipSequence.length) + 1;
+
   return (
     <main className="case-page">
       <div className="case-shell">
@@ -210,12 +220,20 @@ const CaseStudyPage = () => {
           {project.live && <a className="case-live" href={project.live} target="_blank" rel="noreferrer">Visit public product <ExternalLink size={15} /></a>}
         </section>
 
-        <section className="case-section case-two-column">
+        <nav className="case-jump-nav" aria-label="Case study sections">
+          <a href="#problem">01 / Problem</a>
+          <a href="#architecture">02 / Architecture</a>
+          <a href="#decisions">03 / Decisions</a>
+          <a href="#evidence">04 / Evidence</a>
+          <a href="#maturity">05 / Maturity</a>
+        </nav>
+
+        <section id="problem" className="case-section case-two-column">
           <div><p className="case-section-index">01 / Problem</p><h2>The system problem behind the product.</h2></div>
           <p className="case-body-large">{project.problem}</p>
         </section>
 
-        <section className="case-section">
+        <section id="architecture" className="case-section">
           <div className="case-section-heading"><p className="case-section-index">02 / Architecture</p><h2>System shape.</h2></div>
           <div className="architecture-flow">
             {project.architecture.map((layer, index) => (
@@ -228,21 +246,21 @@ const CaseStudyPage = () => {
           </div>
         </section>
 
-        <section className="case-section case-two-column">
-          <div><p className="case-section-index">03 / Decisions</p><h2>What I optimized for.</h2></div>
+        <section id="decisions" className="case-section case-two-column">
+          <div><p className="case-section-index">03 / Decisions & Tradeoffs</p><h2>What I optimized for.</h2></div>
           <ol className="case-decision-list">
             {project.decisions.map((decision, index) => <li key={decision}><span>{String(index + 1).padStart(2, "0")}</span>{decision}</li>)}
           </ol>
         </section>
 
-        <section className="case-section evidence-section">
+        <section id="evidence" className="case-section evidence-section">
           <div className="case-section-heading"><p className="case-section-index">04 / Evidence</p><h2>Claims with a boundary.</h2></div>
           <div className="case-evidence-grid">
             {project.evidence.map((item) => <div key={item}><CheckCircle2 size={17} /><span>{item}</span></div>)}
           </div>
         </section>
 
-        <section className="case-section case-two-column">
+        <section id="maturity" className="case-section case-two-column">
           <div><p className="case-section-index">05 / Maturity</p><h2>Where it actually stands.</h2></div>
           <div>
             <p className="case-body-large">{project.currentState}</p>
@@ -251,8 +269,15 @@ const CaseStudyPage = () => {
         </section>
 
         <section className="case-next">
-          <div><p className="case-section-index">NEXT</p><h2>See the rest of the engineering portfolio.</h2></div>
-          <Link to="/#work">Back to flagship work <ArrowUpRight size={16} /></Link>
+          <div className="case-next-info">
+            <p className="case-section-index">NEXT FLAGSHIP ({String(nextNumber).padStart(2, "0")} / 04)</p>
+            <h2>{nextProject.name}</h2>
+            <p className="case-next-kicker">{nextProject.kicker}</p>
+          </div>
+          <div className="case-next-actions">
+            <Link className="button primary" to={`/work/${nextProject.slug}`}>Read case study <ArrowUpRight size={15} /></Link>
+            <Link className="button ghost" to="/#work"><ArrowLeft size={15} /> All flagship systems</Link>
+          </div>
         </section>
       </div>
     </main>

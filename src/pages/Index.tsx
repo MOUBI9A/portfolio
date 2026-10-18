@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowDown,
   ArrowUpRight,
+  Check,
   CheckCircle2,
+  Copy,
   Cpu,
   Database,
   ExternalLink,
@@ -117,6 +120,7 @@ const selectedWork: SupportingProject[] = [
     description:
       "Multi-tenant CRM and workflow architecture spanning GoHighLevel, WordPress, automation, lead flows, infrastructure audits and agency operations.",
     tags: ["GoHighLevel", "WordPress", "CRM", "Webhooks", "Automation"],
+    privateRepo: true,
   },
   {
     name: "FoodEx",
@@ -172,27 +176,87 @@ const navigation = [
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText("hamzamoadin37@gmail.com").catch(() => {});
+    }
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2200);
+  };
 
   useEffect(() => {
     document.title = "Hamza El Moueddane — AI-Native Product Engineer & Systems Architect";
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen]);
 
   return (
     <div className="site-shell">
       <header className="topbar" aria-label="Primary navigation">
         <a href="#top" className="brand" aria-label="Hamza El Moueddane — home">HE<span>/</span>26</a>
         <nav className="desktop-nav" aria-label="Portfolio sections">
-          {navigation.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          {navigation.map(([label, href]) =>
+            href.startsWith("/") ? (
+              <Link key={href} to={href}>
+                {label}
+              </Link>
+            ) : (
+              <a key={href} href={href}>
+                {label}
+              </a>
+            )
+          )}
         </nav>
         <a className="availability desktop-only" href="mailto:hamzamoadin37@gmail.com">
           <span className="availability-dot" aria-hidden="true" /> Available for selected work
         </a>
-        <button className="menu-button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation" : "Open navigation"}>
+        <button
+          className="menu-button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-controls="mobile-navigation"
+        >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
         {menuOpen && (
-          <div className="mobile-menu">
-            {navigation.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
+          <div
+            id="mobile-navigation"
+            className="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
+            {navigation.map(([label, href]) =>
+              href.startsWith("/") ? (
+                <Link key={href} to={href} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </Link>
+              ) : (
+                <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </a>
+              )
+            )}
             <a href="mailto:hamzamoadin37@gmail.com" onClick={() => setMenuOpen(false)}>Start a conversation</a>
           </div>
         )}
@@ -223,7 +287,11 @@ const Index = () => {
                 <p className="console-label">FOUNDATION</p><p className="console-value">1337 / 42 Network · C/C++ systems programming · production web engineering</p>
                 <div className="console-links">
                   <a href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a>
-                  <a href="mailto:hamzamoadin37@gmail.com">Email <ArrowUpRight size={14} /></a>
+                  <Link to="/resume">Resume <ArrowUpRight size={14} /></Link>
+                  <button type="button" className="console-copy-link" onClick={handleCopyEmail} title="Copy hamzamoadin37@gmail.com to clipboard" aria-label="Copy email address to clipboard">
+                    {copiedEmail ? <Check size={13} /> : <Mail size={13} />}
+                    <span>{copiedEmail ? "Copied" : "Copy email"}</span>
+                  </button>
                 </div>
               </div>
             </aside>
@@ -261,7 +329,7 @@ const Index = () => {
                   <div className="project-meta">
                     <span>{project.status}</span>
                     <div className="project-links">
-                      <a href={`/work/${caseStudySlugs[project.name]}`}>Case study <ArrowUpRight size={14} /></a>
+                      <Link to={`/work/${caseStudySlugs[project.name]}`}>Case study <ArrowUpRight size={14} /></Link>
                       {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <ExternalLink size={14} /></a>}
                       {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Public repo <ExternalLink size={14} /></a>}
                       {project.privateRepo && <span className="private-label">Private repository</span>}
@@ -351,7 +419,17 @@ const Index = () => {
           </div>
           <div className="contact-actions">
             <a className="button primary large" href="mailto:hamzamoadin37@gmail.com">Start a conversation <Mail size={17} /></a>
-            <a className="button ghost large" href="/resume">View resume <ArrowUpRight size={17} /></a>
+            <button
+              type="button"
+              className="button ghost large copy-email-btn"
+              onClick={handleCopyEmail}
+              aria-label="Copy email address to clipboard"
+              title="Copy hamzamoadin37@gmail.com to clipboard"
+            >
+              {copiedEmail ? <Check size={17} /> : <Copy size={17} />}
+              <span>{copiedEmail ? "Copied to clipboard" : "Copy email"}</span>
+            </button>
+            <Link className="button ghost large" to="/resume">View resume <ArrowUpRight size={17} /></Link>
             <a className="button ghost large" href="https://www.linkedin.com/in/hamza-el-moueddane" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={17} /></a>
           </div>
         </section>
