@@ -2,10 +2,14 @@ name: Portfolio CI
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - design/2026-evidence-portfolio
   push:
     branches:
+      - main
       - design/2026-evidence-portfolio
+      - antigravity/portfolio-overnight
 
 permissions:
   contents: read
