@@ -4,12 +4,10 @@ on:
   pull_request:
     branches:
       - main
-      - design/2026-evidence-portfolio
   push:
     branches:
       - main
-      - design/2026-evidence-portfolio
-      - antigravity/portfolio-overnight
+      - release/portfolio-final-polish
 
 permissions:
   contents: read
