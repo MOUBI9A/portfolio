@@ -29,7 +29,8 @@ const ProjectVisual = ({ visual, compact = false }: Props) => {
             <img
               src={captureUrl}
               alt={`Live website capture: ${visual.caption}`}
-              loading={compact ? "lazy" : "eager"}
+              loading="lazy"
+              fetchPriority="low"
               decoding="async"
               onError={() => setCaptureFailed(true)}
             />
