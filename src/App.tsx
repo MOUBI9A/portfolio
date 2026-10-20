@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
-import CaseStudyPage from "./pages/CaseStudyPage";
 import NotFound from "./pages/NotFound";
-import ResumePage from "./pages/ResumePage";
+
+const CaseStudyPage = lazy(() => import("./pages/CaseStudyPage"));
+const ResumePage = lazy(() => import("./pages/ResumePage"));
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -26,15 +27,23 @@ const ScrollToTop = () => {
   return null;
 };
 
+const RouteFallback = () => (
+  <div className="section-wrap" role="status" aria-live="polite">
+    <span className="sr-only">Loading page…</span>
+  </div>
+);
+
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/resume" element={<ResumePage />} />
-      <Route path="/work/:slug" element={<CaseStudyPage />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={<RouteFallback />}>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/resume" element={<ResumePage />} />
+        <Route path="/work/:slug" element={<CaseStudyPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   </BrowserRouter>
 );
 
