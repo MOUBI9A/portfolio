@@ -1,6 +1,6 @@
 # Portfolio Registry
 
-Last full GitHub + Vercel account scan: **2026-10-19**
+Last full GitHub + Vercel account scan: **2026-11-02**
 Primary account: `MOUBI9A`
 Primary portfolio: `MOUBI9A/portfolio`
 
@@ -13,7 +13,7 @@ This file is the durable source-of-truth for portfolio inclusion decisions. Repo
 | Portfolio project | Repository lineage | Visibility | Live evidence | Status | Current action |
 |---|---|---|---|---|---|
 | CarHub OS / Fider | `carhub-os`, `carhubos`, `carhub-infinity` | Private | `https://carhub.codes` | Active product / pilot hardening | KEEP FLAGSHIP. One evolving product lineage. |
-| Creator Revenue OS | `creator-revenue-os` | Private | Vercel/release evidence | Active canonical release line | KEEP FLAGSHIP. |
+| Creator Revenue OS | `creator-revenue-os`, `creator-revenue-os-v2` | Private | Legacy Vercel/release evidence; v2 not deployed | Active v2 rebuild / release-candidate lineage | KEEP FLAGSHIP as one lineage. Do not claim v2 production readiness yet. |
 | LeadForge | `leadforge` | Private | Repository/release evidence | Late-beta engineering system | KEEP FLAGSHIP. |
 | NOOR | `NOOR` | Private | Repository/runtime evidence | Long-running private agent system | KEEP FLAGSHIP. |
 
@@ -21,8 +21,8 @@ This file is the durable source-of-truth for portfolio inclusion decisions. Repo
 
 | Portfolio project | Repository lineage | Visibility | Live evidence | Status | Current action |
 |---|---|---|---|---|---|
-| Labgenz / HighLevelSync | Operational/client work; no single canonical public repo | Mixed/private | `https://labgenz.com` | Live client systems | KEEP + dedicated case study; preserve client-work boundary. |
-| Interactive Product Experience Lab | `MOUBI9A.github.io` | Public | Multiple Vercel deployments | Active multi-experience lineage | PROMOTE TO SUPPORTING as one lineage. Includes IMAGE Skincare plus ten product-experience apps; do not create duplicate cards. |
+| Labgenz / HighLevelSync | Operational/client work + `labgenz-content-production` | Mixed/private | `https://labgenz.com` | Live client systems + production operations | KEEP + dedicated case study; preserve client-work boundary. |
+| Interactive Product Experience Lab | `MOUBI9A.github.io` | Public | Multiple Vercel deployments | Active multi-experience lineage | KEEP SUPPORTING as one lineage; do not create duplicate cards. |
 | Pulse / Instagram Analytics | `instagram-analytics` | Public | `https://instagram-analytics-omega.vercel.app` | Deployed | KEEP SUPPORTING. |
 | ArtifactOS | `art-porfolio` | Public | `https://art-porfolio-one.vercel.app` | Deployed | KEEP SUPPORTING. |
 | FoodEx | `foodex`, `new_foodex`, `foodex-future-fusion` | Mixed | Repo/build evidence | Evolving marketplace lineage | KEEP SUPPORTING as one lineage. |
@@ -42,9 +42,11 @@ Legend: `FLAGSHIP`, `SUPPORTING`, `CLIENT`, `FOUNDATION`, `EXPERIMENT`, `ARCHIVE
 | `carhub-os` | Private | FLAGSHIP LINEAGE | Via CarHub | Enterprise mobility ERP/Fider lineage. |
 | `carhubos` | Private | FLAGSHIP LINEAGE | Via CarHub | Current pilot/readiness lineage. |
 | `casastitch-shop` | Private | ARCHIVE | No | Keep archived absent stronger evidence. |
-| `chahid-vite` | Private | EXPERIMENT | No | New 2026-10-18 React/Vite/Supabase driving-school/rental app; auth/schema/RLS evidence exists, but no verified deployment/test release evidence yet. Re-evaluate later. |
+| `chahid-vite` | Private | EXPERIMENT | No | React/Vite/Supabase driving-school/rental app; auth/schema/RLS evidence exists, but no verified deployment/test release evidence yet. |
 | `cigcar-casablanca-landing` | Private | CLIENT | Yes, compact | CIG Car client/internship work. |
-| `creator-revenue-os` | Private | FLAGSHIP | Yes | Creator commerce / campaign / finance / AI-media platform. |
+| `consumer-transformation-blueprint` | Private | EXPERIMENT | No | Insufficient substantive implementation/release evidence. |
+| `creator-revenue-os` | Private | FLAGSHIP LINEAGE | Yes, via Creator Revenue OS | Legacy deployed/release lineage. |
+| `creator-revenue-os-v2` | Private | FLAGSHIP LINEAGE | Via Creator Revenue OS | Active rebuild. `work` is 38 commits ahead of `main`; Checkpoint 11 merged with strong local exact-SHA test/review evidence, but application build placeholders, non-executing remote CI and no v2 deployment remain maturity boundaries. |
 | `CTF_helper` | Public | ARCHIVE | No | Small utility. |
 | `Cub3d` | Private | FOUNDATION | Grouped only | 42 systems history. |
 | `E-com-web` | Public | ARCHIVE | No | Earlier ecommerce/learning work. |
@@ -55,13 +57,14 @@ Legend: `FLAGSHIP`, `SUPPORTING`, `CLIENT`, `FOUNDATION`, `EXPERIMENT`, `ARCHIVE
 | `game-hub-spa` | Private | ARCHIVE | No | Learning/older product work. |
 | `instagram-analytics` | Public | SUPPORTING | Yes | Pulse deployed analytics product. |
 | `IRC_42` | Public | FOUNDATION | Grouped | C++ networking evidence. |
+| `labgenz-content-production` | Private | CLIENT/OPERATIONS LINEAGE | Via Labgenz | Structured production/QA workspace; preserve inside Labgenz rather than a separate software card. |
 | `leadforge` | Private | FLAGSHIP | Yes | Agentic B2B revenue system. |
 | `Libft` | Private | FOUNDATION | No separate card | Duplicate/private lineage. |
 | `LIBFT_42` | Public | FOUNDATION | Grouped | Foundational C library work. |
 | `microservice-logscape` | Public | EXPERIMENT | No | Generic/scaffold-level evidence. |
 | `MINITALK_42` | Public | FOUNDATION | Grouped | Signals/process IPC exercise. |
 | `MOUBI9A` | Public | INFRA/PROFILE | Indirect | GitHub profile repository. |
-| `MOUBI9A.github.io` | Public | SUPPORTING | Yes, via Experience Lab | Multi-app interactive product experience lineage: IMAGE plus ten deployed product experiences with CI/accessibility/performance evidence. |
+| `MOUBI9A.github.io` | Public | SUPPORTING | Yes, via Experience Lab | Multi-app interactive product experience lineage with deployed experiences and CI/accessibility/performance evidence. |
 | `moub_locker_macos` | Public | ARCHIVE | No | Small utility. |
 | `new_foodex` | Private | SUPPORTING LINEAGE | Via FoodEx | Later FoodEx evolution. |
 | `new_trns` | Public | ARCHIVE | No | Learning/history. |
@@ -77,21 +80,17 @@ Legend: `FLAGSHIP`, `SUPPORTING`, `CLIENT`, `FOUNDATION`, `EXPERIMENT`, `ARCHIVE
 | `web` | Public | ARCHIVE | No | Older web work. |
 | `xx` | Public | ARCHIVE | No | Insufficient signal / unclear identity. |
 
-## 2026-10-19 material deltas
+## 2026-11-02 material delta
 
-### Interactive Product Experience Lab
+### Creator Revenue OS v2
 
-`MOUBI9A.github.io` materially changed after the prior registry scan. Verified commits added/extended a production build CI gate across ten experience apps, accessibility and keyboard hardening, reduced-motion behavior, an Alphafly telemetry API, and Orphéon progressive WebGL hydration. The Orphéon performance commit reports initial JavaScript reduced from 120.8 KB gzip to 4.3 KB gzip by deferring Three.js, with all ten experience CI gates passing.
+The v2 rebuild materially progressed since the 2026-10-26 audit. Canonical `work` is now 38 commits ahead of `main`, and Checkpoint 11 merged through PR #16. Verified evidence covers media-generation provenance, provider-operation reconciliation/idempotency, deterministic composition truth, PostgreSQL invariants and expanded integration testing. The final PR records 18/18 migrations from zero, 137 generic tests, 45/45 database persistence/invariant tests plus auth/campaign/rights/finance/provider/AI/content/media integration suites, clean typecheck/lint/schema-diff/npm-audit gates, and independent review with no HIGH/MEDIUM blockers.
 
-The connected Vercel account shows dedicated projects for Garmin Fenix 8 Pro, Sony A1 II, RIMOWA Original, Beosound A9, Linea Mini, Orphéon, Alphafly 3, Taycan Turbo GT, Beoplay H100 and Speedmaster 38. Decision: this is strong enough to become one supporting portfolio lineage. Public UI promotion should still pass normal portfolio build/browser/accessibility gates before merge.
+Boundaries remain explicit: API/web/mobile/render-worker application build scripts are placeholders, remote GitHub Actions continues to fail before executing job steps, and no connected Vercel deployment exists for v2. Decision: strengthen the durable FLAGSHIP lineage evidence, but make no new public production/deployment claim.
 
-### Chahid Auto-École
+### Account and deployment reconciliation
 
-`chahid-vite` is a newly detected private repository. Current evidence supports React 18 + Vite + Supabase, authentication, `profiles`/`cars`/`car_rentals` schema, RLS policies and multilingual setup documentation. No connected Vercel project or verified test suite was found in this cycle. Decision: track as EXPERIMENT, not public portfolio content yet.
-
-### Existing lineages
-
-CarHub, Creator Revenue OS, LeadForge, NOOR, FoodEx, Pulse and ArtifactOS remain in their existing hierarchy. Bali Laundry remains non-promotable. No new repository name is treated as a new portfolio project when it belongs to an existing lineage.
+No new repository was detected since the prior audit. The connected Vercel team still lists 22 projects and no new deployment changes the portfolio hierarchy. No public portfolio content change is justified this cycle.
 
 ## Promotion rules
 
