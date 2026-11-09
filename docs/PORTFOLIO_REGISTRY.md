@@ -1,6 +1,6 @@
 # Portfolio Registry
 
-Last full GitHub + Vercel account scan: **2026-11-02**
+Last full GitHub + Vercel account scan: **2026-11-09**
 Primary account: `MOUBI9A`
 Primary portfolio: `MOUBI9A/portfolio`
 
@@ -46,7 +46,7 @@ Legend: `FLAGSHIP`, `SUPPORTING`, `CLIENT`, `FOUNDATION`, `EXPERIMENT`, `ARCHIVE
 | `cigcar-casablanca-landing` | Private | CLIENT | Yes, compact | CIG Car client/internship work. |
 | `consumer-transformation-blueprint` | Private | EXPERIMENT | No | Insufficient substantive implementation/release evidence. |
 | `creator-revenue-os` | Private | FLAGSHIP LINEAGE | Yes, via Creator Revenue OS | Legacy deployed/release lineage. |
-| `creator-revenue-os-v2` | Private | FLAGSHIP LINEAGE | Via Creator Revenue OS | Active rebuild. `work` is 38 commits ahead of `main`; Checkpoint 11 merged with strong local exact-SHA test/review evidence, but application build placeholders, non-executing remote CI and no v2 deployment remain maturity boundaries. |
+| `creator-revenue-os-v2` | Private | FLAGSHIP LINEAGE | Via Creator Revenue OS | Active rebuild. `work` is 50 commits ahead of `main`; Checkpoints 12–14 and launch-gate hardening merged with documented exact-SHA local release evidence and independently verified successful PR #21 CI. No v2 production deployment or completed live-social integrations; preserve launch boundaries. |
 | `CTF_helper` | Public | ARCHIVE | No | Small utility. |
 | `Cub3d` | Private | FOUNDATION | Grouped only | 42 systems history. |
 | `E-com-web` | Public | ARCHIVE | No | Earlier ecommerce/learning work. |
@@ -91,6 +91,10 @@ Boundaries remain explicit: API/web/mobile/render-worker application build scrip
 ### Account and deployment reconciliation
 
 No new repository was detected since the prior audit. The connected Vercel team still lists 22 projects and no new deployment changes the portfolio hierarchy. No public portfolio content change is justified this cycle.
+
+## 2026-11-09 material delta
+
+The full 45-repository GitHub inventory and 22-project Vercel inventory are unchanged. Portfolio main had no open PRs at scan time. Creator Revenue OS v2 advanced from 38 to **50** commits ahead of main on canonical `work`. Checkpoints 13–14 add durable render storage and publishing orchestration with immutable publication snapshots, approval checks, at-most-once provider dispatch, durable PostgreSQL outbox/reconciliation and authenticated publishing routes. Exact local release evidence documents 22 migrations, 356 passing combined integration tests plus separately executed real-media tests, real workspace builds and dependency audit. PR #21 remote CI run 41773598016 independently reports success. Social OAuth/live adapters, analytics, CRM, agents, production UX/mobile and golden-journey deployment are still missing; do not claim production readiness. Recent Vercel preview records for legacy Creator Revenue OS and CarHub include BLOCKED states, not verified successful releases. No public portfolio promotion or UI change is justified. See [dated audit](PORTFOLIO_CTO_AUDIT_2026-11-09.md).
 
 ## Promotion rules
 
