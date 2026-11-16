@@ -1,6 +1,6 @@
 # Portfolio Registry
 
-Last full GitHub + Vercel account scan: **2026-11-02**
+Last full GitHub + Vercel account scan: **2026-11-16**
 Primary account: `MOUBI9A`
 Primary portfolio: `MOUBI9A/portfolio`
 
@@ -12,7 +12,7 @@ This file is the durable source-of-truth for portfolio inclusion decisions. Repo
 
 | Portfolio project | Repository lineage | Visibility | Live evidence | Status | Current action |
 |---|---|---|---|---|---|
-| CarHub OS / Fider | `carhub-os`, `carhubos`, `carhub-infinity` | Private | `https://carhub.codes` | Active product / pilot hardening | KEEP FLAGSHIP. One evolving product lineage. |
+| CarHub OS / Fider | `carhub-os`, `carhubos`, `carhub-infinity` | Private | `https://carhub.codes` | Active product / pilot hardening; AI governance drafts isolated | KEEP FLAGSHIP. One evolving product lineage. |
 | Creator Revenue OS | `creator-revenue-os`, `creator-revenue-os-v2` | Private | Legacy Vercel/release evidence; v2 not deployed | Active v2 rebuild / release-candidate lineage | KEEP FLAGSHIP as one lineage. Do not claim v2 production readiness yet. |
 | LeadForge | `leadforge` | Private | Repository/release evidence | Late-beta engineering system | KEEP FLAGSHIP. |
 | NOOR | `NOOR` | Private | Repository/runtime evidence | Long-running private agent system | KEEP FLAGSHIP. |
@@ -40,13 +40,13 @@ Legend: `FLAGSHIP`, `SUPPORTING`, `CLIENT`, `FOUNDATION`, `EXPERIMENT`, `ARCHIVE
 | `bali-landry` | Private | EXPERIMENT | No | Effectively empty; not portfolio-ready. |
 | `carhub-infinity` | Private | FLAGSHIP LINEAGE | Via CarHub | Historical/adjacent CarHub lineage. |
 | `carhub-os` | Private | FLAGSHIP LINEAGE | Via CarHub | Enterprise mobility ERP/Fider lineage. |
-| `carhubos` | Private | FLAGSHIP LINEAGE | Via CarHub | Current pilot/readiness lineage. |
+| `carhubos` | Private | FLAGSHIP LINEAGE | Via CarHub | Current pilot/readiness lineage. Main includes Nov 12 dashboard crash recovery; stacked draft PRs #23–#26 add default-off AI operations/governance, founder controls and quota ledger. No provider inference or live AI rollout. |
 | `casastitch-shop` | Private | ARCHIVE | No | Keep archived absent stronger evidence. |
 | `chahid-vite` | Private | EXPERIMENT | No | React/Vite/Supabase driving-school/rental app; auth/schema/RLS evidence exists, but no verified deployment/test release evidence yet. |
 | `cigcar-casablanca-landing` | Private | CLIENT | Yes, compact | CIG Car client/internship work. |
 | `consumer-transformation-blueprint` | Private | EXPERIMENT | No | Insufficient substantive implementation/release evidence. |
 | `creator-revenue-os` | Private | FLAGSHIP LINEAGE | Yes, via Creator Revenue OS | Legacy deployed/release lineage. |
-| `creator-revenue-os-v2` | Private | FLAGSHIP LINEAGE | Via Creator Revenue OS | Active rebuild. `work` is 38 commits ahead of `main`; Checkpoint 11 merged with strong local exact-SHA test/review evidence, but application build placeholders, non-executing remote CI and no v2 deployment remain maturity boundaries. |
+| `creator-revenue-os-v2` | Private | FLAGSHIP LINEAGE | Via Creator Revenue OS | Active rebuild. `work` is 50 commits ahead of `main`; Checkpoints 13–14 include render-storage and publishing-outbox evidence, with remote CI success verified for PR #21. No separate v2 production deployment or completed live provider integrations. |
 | `CTF_helper` | Public | ARCHIVE | No | Small utility. |
 | `Cub3d` | Private | FOUNDATION | Grouped only | 42 systems history. |
 | `E-com-web` | Public | ARCHIVE | No | Earlier ecommerce/learning work. |
@@ -79,6 +79,21 @@ Legend: `FLAGSHIP`, `SUPPORTING`, `CLIENT`, `FOUNDATION`, `EXPERIMENT`, `ARCHIVE
 | `trns` | Private | ARCHIVE | No | Older/learning lineage. |
 | `web` | Public | ARCHIVE | No | Older web work. |
 | `xx` | Public | ARCHIVE | No | Insufficient signal / unclear identity. |
+
+## 2026-11-16 material delta
+
+- Full GitHub inventory remains **45 repositories** and connected Vercel inventory remains **22 projects**; no new repository or independent flagship candidate.
+- **CarHub/Fider:** `carhubos` main includes the Nov 12 production-browser dashboard recovery (PR #21). Draft stacked AI phases #23–#26 add deterministic tenant-scoped briefing, default-off agency governance, founder emergency/review controls, allowlisted read-only tools, and atomic quota reservation accounting. Code, migrations, scoped security tests and disposable PostgreSQL rehearsal are evidenced in PRs and documentation. The newest quota draft reports 703 backend tests passed (16 skipped) and 73 frontend tests passed locally; independent security review and exact-head remote CI remain release gates. Vercel READY records on feature branches are previews (target null), **not proof of production rollout**. No provider inference, payments or autonomous customer actions are enabled by this work.
+- **Creator Revenue OS v2:** `work` remains **50 commits ahead** of `main`, unchanged from Nov 9; no new independent deployment evidence.
+- **Portfolio:** Nov 9 audit PR #16 remains open; its GitHub Portfolio CI workflow run 42539338837 concluded success. This audit is a separate documentation-only PR based on current main, without merging or bypassing pending review/deployment checks.
+- **Decision:** Preserve all lineages and flagship classes; no public content or production-readiness claim changes.
+
+## References
+
+- [CarHub production dashboard recovery](https://github.com/MOUBI9A/carhubos/pull/21)
+- [CarHub AI quota draft #26](https://github.com/MOUBI9A/carhubos/pull/26)
+- [CarHub quota design](https://github.com/MOUBI9A/carhubos/blob/feat/ai-quota-foundation/docs/AI_QUOTA_PHASE1D_20261112.md)
+- [Prior portfolio audit PR #16](https://github.com/MOUBI9A/portfolio/pull/16)
 
 ## 2026-11-02 material delta
 
