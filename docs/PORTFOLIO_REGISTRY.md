@@ -1,6 +1,6 @@
 # Portfolio Registry
 
-Last full GitHub + Vercel account scan: **2026-11-02**
+Last full GitHub + Vercel account scan: **2026-11-23**
 Primary account: `MOUBI9A`
 Primary portfolio: `MOUBI9A/portfolio`
 
@@ -91,6 +91,14 @@ Boundaries remain explicit: API/web/mobile/render-worker application build scrip
 ### Account and deployment reconciliation
 
 No new repository was detected since the prior audit. The connected Vercel team still lists 22 projects and no new deployment changes the portfolio hierarchy. No public portfolio content change is justified this cycle.
+
+## 2026-11-23 material delta
+
+- Reconciled **45 GitHub repositories** and **22 Vercel projects**; no new repository or project. Portfolio main still has open audit PRs #16 and #17, not incorporated into main; this cycle records a fresh standalone audit rather than claiming those changes merged.
+- **CarHub/Fider**: Nov 22 production Vercel deployment is READY on main SHA `a854a21d6970a0dd2c6c3abb3c21d945d8ed2b83` (documentation/topology merge). The merged production topology review records auto-deploy from main **without a production migration/promotion gate** and incomplete RLS defense-in-depth (33 of 41 public tables without RLS; no direct anonymous/authenticated DML grants found). This is not proof of publicly exposed data.
+- CarHub draft PRs #42 (16-PR disposition) and #43 (six-stage environment/provider/data policy) remain unmerged. AI phases #23–#26 are deferred, not live. Project documentation records strong **local-only** browser/backend/frontend/migration checks, but Nov 22 hosted CI was blocked before job execution by billing restrictions; hosted staging is also blocked. No verified signed pilot.
+- Creator Revenue OS v2 canonical `work` remains **50 ahead / 0 behind** `main`; no new production evidence. Preserve all flagship and supporting lineages. No public portfolio content changes justified.
+- See [dated audit](PORTFOLIO_CTO_AUDIT_2026-11-23.md) for evidence, links and release boundaries.
 
 ## Promotion rules
 
